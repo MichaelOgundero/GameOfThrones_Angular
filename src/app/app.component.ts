@@ -19,7 +19,7 @@ export class AppComponent  {
   lstWords: Sens;
 
   ngOnInit(){
-    this._dictionaryService.getClasses()
+    this._dictionaryService.getWord()
     .subscribe
     (
       data=>
