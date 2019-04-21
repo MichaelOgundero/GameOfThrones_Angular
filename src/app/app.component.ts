@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+import { dictionaryService } from './dictionary.service';
+import {Sens} from './classes/definitions'
 
 
 @Component({
@@ -10,8 +12,22 @@ import {HttpClient} from '@angular/common/http';
 export class AppComponent  {
   name = 'Angular';
 
-  readonly ROOT_URL = "https://od-api.oxforddictionaries.com/api/v2/"
+  constructor(private _dictionaryService: dictionaryService){
 
-  constructor(private http: HttpClient){}
+  }
+
+  lstWords: Sens;
+
+  ngOnInit(){
+    this._dictionaryService.getClasses()
+    .subscribe
+    (
+      data=>
+      {
+        this.lstWords = data;
+      }
+
+    )
+  }
 
 }

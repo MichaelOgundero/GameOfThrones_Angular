@@ -4,13 +4,14 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
+import { dictionaryService } from './dictionary.service';
 import { HelloComponent } from './hello.component';
-import { dictionaryService } from './';
+
 
 @NgModule({
   imports:      [ BrowserModule, FormsModule, HttpClientModule ],
   declarations: [ AppComponent, HelloComponent ],
-  providers: [dictionaryService],
+  providers: [dictionaryService], //so that its available to all the componenets in the app
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }
