@@ -10,9 +10,9 @@ import {Sens} from './classes/definitions'
   styleUrls: [ './app.component.css' ]
 })
 export class AppComponent  {
-  name = 'Angular';
+  /*name = 'Angular';*/
 
-  constructor(private _dictionaryService: dictionaryService){
+  /*constructor(private _dictionaryService: dictionaryService){
 
   }
 
@@ -28,6 +28,6 @@ export class AppComponent  {
       }
 
     )
-  }
+  }*/
 
 }
