@@ -6,7 +6,6 @@
 
 
 <button (click)="getBooks()">GET Books</button>
-
 <ul>
   <li *ngFor = "let x of rootobjectsObservable | async">
       -- Book Name: {{x.name}}

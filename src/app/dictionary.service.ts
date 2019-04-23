@@ -17,5 +17,9 @@ export class dictionaryService
         console.log(data);
         this.names = data;
     });*/
+
+    
   }
+
+
 }

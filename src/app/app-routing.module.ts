@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { BookDetailComponent } from './book-detail.component';
 
-import { WordSearchComponent } from './word-search.component';
+import { BookCharactersComponent } from './book-characters.component';
 
 
 const appRoutes: Routes = [
@@ -18,7 +18,7 @@ const appRoutes: Routes = [
   },
   {
     path: "search",
-    component: WordSearchComponent
+    component: BookCharactersComponent
   }
 ]
 
