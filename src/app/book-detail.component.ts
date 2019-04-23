@@ -17,9 +17,13 @@ export class BookDetailComponent  {
   constructor(private _dictionaryService: dictionaryService){
 
     this.rootobjectsObservable = this._dictionaryService.getBooks();
+    
+  
   }
 
- // ngOnInit(){}
+  ngOnInit(){
+    console.log(this._dictionaryService.getSearchBook("A Game Of Thrones"))
+  }
 
  
 }

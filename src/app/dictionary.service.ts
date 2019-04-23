@@ -21,5 +21,14 @@ export class dictionaryService
     
   }
 
+  getSearchBook(val: string){
+    let url = "https://www.anapioficeandfire.com/api/books/" + "?name=" + val;
+
+    return this.httpclient.get(url)
+    .subscribe((data: any[])=>{
+     console.log(data);
+    })
+  }
+
 
 }
