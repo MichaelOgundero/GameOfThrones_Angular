@@ -13,10 +13,7 @@ export class dictionaryService
   { 
     let url  = "https://www.anapioficeandfire.com/api/books/";
     return this.httpclient.get(url);
-   /* subscribe((data: any[] )=>{
-        console.log(data);
-        this.names = data;
-    });*/
+   
 
     
   }
@@ -24,10 +21,7 @@ export class dictionaryService
   getSearchBook(val: string){
     let url = "https://www.anapioficeandfire.com/api/books/" + "?name=" + val;
 
-    return this.httpclient.get(url)
-    .subscribe((data: any[])=>{
-     console.log(data);
-    })
+    return this.httpclient.get(url);
   }
 
 

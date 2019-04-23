@@ -7,16 +7,22 @@
 
 <button (click)="getBooks()">GET Books</button>
 <ul>
-  <li *ngFor = "let x of rootobjectsObservable | async">
+ <li *ngFor = "let x of rootobjectsObservable | async">
       -- Book Name: {{x.name}}
-      
-  </li>
+             
 </ul>
 
 
 
 <input #search placeholder="search"/>
 <button (click)="getSearchBook(search.value)">search</button>
+<ul>
+ <li *ngFor = "let x of rootobjectsObservableSearch | async">
+      -- Book Name: {{x.name}} <br>
+      -- author: {{x.authors}} <br>
+      -- date: {{x.released}} <br>
+             
+</ul>
 
 
 

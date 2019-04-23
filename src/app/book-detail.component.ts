@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { dictionaryService } from './dictionary.service';
-import {Observable} from 'rxjs';
+import {Observable, Subject} from 'rxjs';
 import {RootObject} from './book'
 
 
@@ -14,6 +14,12 @@ export class BookDetailComponent  {
  private rootobjects: RootObject[] = [];
  private rootobjectsObservable: Observable<any[]>;
 
+ private rootobjectsObservableSearch: Observable<any[]>;
+
+
+
+
+
   constructor(private _dictionaryService: dictionaryService){
 
     this.rootobjectsObservable = this._dictionaryService.getBooks();
@@ -23,6 +29,11 @@ export class BookDetailComponent  {
 
   ngOnInit(){
     console.log(this._dictionaryService.getSearchBook("A Game Of Thrones"))
+  }
+
+  getSearchBook(val: string){
+      this.rootobjectsObservableSearch = this._dictionaryService.getSearchBook(val);
+    
   }
 
  
