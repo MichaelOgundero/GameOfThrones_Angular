@@ -1,0 +1,18 @@
+<hello ></hello>
+<p>
+  This is the book list page
+</p>
+
+
+
+<button (click)="getBooks()">GET Books</button>
+
+<ul>
+  <li *ngFor = "let x of rootobjectsObservable | async">
+      -- Book Name: {{x.name}}
+      
+  </li>
+</ul>
+
+
+

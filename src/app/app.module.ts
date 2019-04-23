@@ -9,13 +9,13 @@ import { dictionaryService } from './dictionary.service';
 import { HelloComponent } from './hello.component';
 
 import { AppRoutingModule } from './app-routing.module';
-import { WordDetailComponent } from './word-detail.component';
+import { BookDetailComponent } from './book-detail.component';
 import { WordSearchComponent } from './word-search.component';
 
 
 @NgModule({
   imports:      [ BrowserModule, FormsModule, HttpClientModule, AppRoutingModule ],
-  declarations: [ AppComponent, HelloComponent, WordDetailComponent, WordSearchComponent ],
+  declarations: [ AppComponent, HelloComponent, BookDetailComponent, WordSearchComponent ],
   providers: [dictionaryService], //so that its available to all the componenets in the app
   bootstrap: [ AppComponent ]
 })

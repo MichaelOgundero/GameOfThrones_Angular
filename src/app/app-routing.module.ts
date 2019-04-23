@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { WordDetailComponent } from './word-detail.component';
+import { BookDetailComponent } from './book-detail.component';
 
 import { WordSearchComponent } from './word-search.component';
 
@@ -9,7 +9,7 @@ import { WordSearchComponent } from './word-search.component';
 const appRoutes: Routes = [
   {
     path: "detail",
-    component: WordDetailComponent
+    component: BookDetailComponent
   },
   {
     path: "",
