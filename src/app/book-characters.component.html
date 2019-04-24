@@ -1,4 +1,26 @@
 
 <p>
+  <button>Books</button>
+  <span class="tab">
+    <button>Houses</button>
+  </span>
+
+</p>
+
+<p>
   This is the character details page
 </p>
+
+<input #search placeholder="search for a character..."/>
+<button (click)="getSearchCharacters(search.value)">search</button>
+<ul>
+ <li *ngFor = "let x of rootobjectscharObservableSearch | async" >
+      -- name: {{x.name}} <br>
+      -- played by: {{x.playedBy}}<br>
+      -- gender: {{x.gender}}<br>
+      -- date of birth: {{x.born}}<br>
+      -- culture: {{x.culture}}
+  
+             
+</ul>
+

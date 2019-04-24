@@ -1,28 +1,39 @@
-<hello ></hello>
+
+<p>
+  <button>Characters</button>
+  <span class="tab">
+    <button>Houses</button>
+  </span>
+
+</p>
+
 <p>
   This is the book list page
 </p>
 
 
-
-<button (click)="getBooks()">GET Books</button>
-<ul>
- <li *ngFor = "let x of rootobjectsObservable | async">
-      -- Book Name: {{x.name}}
-             
-</ul>
-
-
-
-<input #search placeholder="search"/>
+<input #search placeholder="search for a book..."/>
 <button (click)="getSearchBook(search.value)">search</button>
 <ul>
- <li *ngFor = "let x of rootobjectsObservableSearch | async">
+ <li *ngFor = "let x of rootobjectsObservableSearch | async" >
       -- Book Name: {{x.name}} <br>
-      -- author: {{x.authors}} <br>
-      -- date: {{x.released}} <br>
+  
              
 </ul>
+
+<br>
+
+<p>List of Books</p>
+<ul>
+ <li *ngFor = "let x of rootobjectsObservable | async" (click)="getBooks()">
+      {{x.name}}          
+</ul>
+
+
+
+
+
+
 
 
 

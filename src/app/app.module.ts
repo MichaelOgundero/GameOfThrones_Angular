@@ -11,11 +11,13 @@ import { HelloComponent } from './hello.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BookDetailComponent } from './book-detail.component';
 import { BookCharactersComponent } from './book-characters.component';
+import { BookHouseComponent } from './book-house.component';
+
 
 
 @NgModule({
   imports:      [ BrowserModule, FormsModule, HttpClientModule, AppRoutingModule ],
-  declarations: [ AppComponent, HelloComponent, BookDetailComponent, BookCharactersComponent],
+  declarations: [ AppComponent, HelloComponent, BookDetailComponent, BookCharactersComponent,BookHouseComponent],
   providers: [dictionaryService], //so that its available to all the componenets in the app
   bootstrap: [ AppComponent ]
 })

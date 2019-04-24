@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { dictionaryService } from './dictionary.service';
-import {Observable, Subject} from 'rxjs';
+import {Observable} from 'rxjs';
 import {RootObject} from './book'
 
 
@@ -21,6 +21,7 @@ export class BookDetailComponent  {
 
 
   constructor(private _dictionaryService: dictionaryService){
+
 
     this.rootobjectsObservable = this._dictionaryService.getBooks();
     

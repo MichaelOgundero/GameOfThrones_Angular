@@ -1,0 +1,27 @@
+<p>
+  <button>Characters</button>
+  <span class="tab">
+    <button>Books</button>
+  </span>
+
+</p>
+
+<input #search placeholder="search for a house..."/>
+<button (click)="getSearchHouses(search.value)">search</button>
+<ul>
+ <li *ngFor = "let x of rootobjectshouseObservableSearch | async" >
+      -- House Name: {{x.name}} <br>
+  
+             
+</ul>
+
+
+
+<p>List of Houses</p>
+<ul>
+ <li *ngFor = "let x of rootobjectshouseObservable | async" (click)="getHouses()">
+      {{x.name}}          
+</ul>
+
+
+

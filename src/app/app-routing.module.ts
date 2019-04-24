@@ -5,20 +5,26 @@ import { BookDetailComponent } from './book-detail.component';
 
 import { BookCharactersComponent } from './book-characters.component';
 
+import { BookHouseComponent } from './book-house.component';
+
 
 const appRoutes: Routes = [
   {
-    path: "detail",
+    path: "books",
     component: BookDetailComponent
   },
   {
     path: "",
-    redirectTo: "/detail", //if u have an empty path it redirects to the details page
+    redirectTo: "/books", //if u have an empty path it redirects to the details page
     pathMatch: "full"
   },
   {
-    path: "search",
+    path: "characters",
     component: BookCharactersComponent
+  },
+  {
+    path: "houses",
+    component: BookHouseComponent
   }
 ]
 
