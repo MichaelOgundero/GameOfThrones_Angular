@@ -18,9 +18,9 @@ export class BookHouseComponent{
   private rootobjectshouseObservableSearch: Observable<any[]>[];
 
   constructor(private _dictionaryService: dictionaryService){
-    for(let i=1; i<=9; i++){
-      this.rootobjectshouseObservable = this._dictionaryService.getHouses(i);
-    }
+
+      this.rootobjectshouseObservable = this._dictionaryService.getHouses(1);
+    
   }
 
   getSearchHouses(val: string){
