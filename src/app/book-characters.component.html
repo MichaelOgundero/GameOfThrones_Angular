@@ -19,8 +19,13 @@
       -- played by: {{x.playedBy}}<br>
       -- gender: {{x.gender}}<br>
       -- date of birth: {{x.born}}<br>
-      -- culture: {{x.culture}}
-  
-             
+      -- culture: {{x.culture}}           
 </ul>
 
+<p>List of Characters</p>
+<ul>
+  <li *ngFor = "let x of characters" (click)="getCharacters">
+    --Name: {{x.name}}<br>
+    --Alias: {{x.aliases}}<br>  
+   <br>
+</ul>

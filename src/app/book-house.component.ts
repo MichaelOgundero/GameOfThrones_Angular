@@ -14,7 +14,7 @@ export class BookHouseComponent{
   private rootobjectshouse: RootObjectHouses[] = [];
   private rootobjectshouseObservable: Observable<any[]>;
 
-   public houses:any[] = [];
+  public houses:any[] = [];
 
   private rootobjectshouseObservableSearch: Observable<any[]>[];
 
