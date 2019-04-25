@@ -38,6 +38,10 @@ export class dictionaryService {
     return this.httpclient.get(url);
   }
 
+  getBookName(url: string){
+    return this.httpclient.get(url);
+  }
+
 
 
 

@@ -17,6 +17,8 @@ export class BookCharactersComponent {
 
   public bookName: any[] = []; 
 
+  public bookNameArray: any[] = [];
+
   private rootobjectscharObservableSearch: Observable<any[]>;
 
   constructor(private _dictionaryService: dictionaryService){
@@ -24,7 +26,7 @@ export class BookCharactersComponent {
 
   }
 
-  
+ 
 
   async getCharacters(){
     for(let i = 1; i<44; i++){
@@ -37,18 +39,46 @@ export class BookCharactersComponent {
           //console.log("xxxxx")
           item.aliases[0] = "No Alias";
         }
+       if(item.books !== 0){
+         for(let i = 0; i<item.books.length;i++){
+             this._dictionaryService.getBookName(item.books[i]).subscribe(data => {
+            console.log(data.name)          
+            })
+           }
+       }
+    
         this.characters.push(item)
+        
       });//wtf
+
+
     }
-  }
-
- 
-  
-
-
-  //this.characters.push(item)
-
+    //console.log(this.characters[0])
+    
+  }  
   getSearchCharacters(val: string){
     this.rootobjectscharObservableSearch = this._dictionaryService.getSearchCharacters(val);
   }
+
+ /* async getBookName(url: string){
+    let bookName: string
+    const list: any[] = await this._dictionaryService.getBookName(url).toPromise();
+    list.forEach(item => {
+     // console.log(item.name)
+      this.bookNameArray.push(item)
+      //return item.name;
+    }) 
+   
+   
+  }*/
+
+  /*async getBookName(url: string): string{
+    await this._dictionaryService.getBookName(url).subscribe(data => {
+      console.log(data.name);
+        return data.name;
+        
+     })
+
+   
+  }*/
 }
