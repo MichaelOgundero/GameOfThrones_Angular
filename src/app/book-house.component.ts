@@ -14,13 +14,24 @@ export class BookHouseComponent{
   private rootobjectshouse: RootObjectHouses[] = [];
   private rootobjectshouseObservable: Observable<any[]>;
 
+   public houses:any[] = [];
 
   private rootobjectshouseObservableSearch: Observable<any[]>[];
 
   constructor(private _dictionaryService: dictionaryService){
 
-      this.rootobjectshouseObservable = this._dictionaryService.getHouses(1);
+    this.getHouses();
+     // this.rootobjectshouseObservable = this._dictionaryService.getHouses(1);
     
+  }
+
+
+  async getHouses(){
+
+      for(let i = 1; i<10; ++i){
+       const list:any[] =    await this._dictionaryService.getHouses(i).toPromise();    //the promise promises theres going to be a value in it in the future
+        list.forEach( item => this.houses.push(item));
+      }
   }
 
   getSearchHouses(val: string){

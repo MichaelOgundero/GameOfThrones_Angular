@@ -19,7 +19,7 @@
 
 <p>List of Houses</p>
 <ul>
- <li *ngFor = "let x of rootobjectshouseObservable | async" (click)="getHouses()">
+ <li *ngFor = "let x of houses" (click)="getHouses()">
       {{x.name}}          
 </ul>
 
