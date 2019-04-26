@@ -12,14 +12,17 @@
 </p>
 
 <input #search placeholder="search for a character..."/>
-<button (click)="getSearchCharacters(search.value)">search</button>
+<button (click)="searchCharacters(search.value)">search</button>
 <ul>
- <li *ngFor = "let x of rootobjectscharObservableSearch | async" >
+ <li *ngFor = "let x of characterSearchArray " >
       -- name: {{x.name}} <br>
-      -- played by: {{x.playedBy}}<br>
       -- gender: {{x.gender}}<br>
       -- date of birth: {{x.born}}<br>
-      -- culture: {{x.culture}}           
+      -- culture: {{x.culture}} <br> 
+      -- played by: {{x.playedBy}}<br>
+      -- books: {{x.books}} <br>
+      -- povBook(s): {{x.povBooks}}<br>
+          
 </ul>
 
 <p>List of Characters</p>
@@ -27,7 +30,8 @@
   <li *ngFor = "let x of characters" (click)="getCharacters">
     --Name: {{x.name}}<br>
     --Alias: {{x.aliases}}<br>  
-    --Book(s): {{x.books}}
+    --Book(s): {{x.books}}<br>
+    --povBook(s): {{x.povBooks}}<br>
    
     
    <br>

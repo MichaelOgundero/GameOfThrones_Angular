@@ -17,16 +17,15 @@ export class BookCharactersComponent {
 
   public bookName: any[] = []; 
 
-  public bookNameArray: any[] = [];
+  public characterSearchArray: any[] = [];
 
   private rootobjectscharObservableSearch: Observable<any[]>;
 
   constructor(private _dictionaryService: dictionaryService){
     this.getCharacters();
 
-  }
 
- 
+  }
 
   async getCharacters(){
     for(let i = 1; i<44; i++){
@@ -35,7 +34,7 @@ export class BookCharactersComponent {
         if(item.name == ""){
           item.name = "No Name";
         }
-        if(item.aliases == 0){ //wtf how does this even work 2 equals works but not 3
+        if(item.aliases == 0){ 
           item.aliases[0] = "No Alias";
         }
        if(item.books !== 0){
@@ -78,15 +77,157 @@ export class BookCharactersComponent {
             }   
            }
        }
+        
+        if(item.povBooks == 0){
+          item.povBooks[0] = "None"
+        }
+         if(item.povBooks !== 0){
+         for(let i = 0; i<item.povBooks.length;i++){
+            if(item.povBooks[i].includes('1')){
+              item.povBooks[i] = " A Game of Thrones"
+            }
+            if(item.povBooks[i].includes('2')){
+              item.povBooks[i] = " A Clash of Kings"
+            }
+            if(item.povBooks[i].includes('3')){
+              item.povBooks[i] = " A Storm of Swords"
+            }
+            if(item.povBooks[i].includes('4')){
+              item.povBooks[i] = " The Hedge Knight"
+            }
+            if(item.povBooks[i].includes('5')){
+              item.povBooks[i] = " A Feast for Crows"
+            }
+            if(item.povBooks[i].includes('6')){
+              item.povBooks[i] = " The Sworn Sword"
+            }
+            if(item.povBooks[i].includes('7')){
+              item.povBooks[i] = " The Mystery Knight"
+            }
+            if(item.povBooks[i].includes('8')){
+              item.povBooks[i] = " A Dance with Dragons"
+            }
+            if(item.povBooks[i].includes('9')){
+              item.povBooks[i] = " The Princess and the Queen"
+            }
+            if(item.povBooks[i].includes('10')){
+              item.povBooks[i] = " The Rogue Prince"
+            }
+            if(item.povBooks[i].includes('11')){
+              item.povBooks[i] = " The World of Ice and Fire"
+            }
+            if(item.povBooks[i].includes('12')){
+              item.povBooks[i] = " A Knight of the Seven Kingdoms"
+            }   
+           }
+       }
         this.characters.push(item);
         
       });//wtf   
     }  
     console.log(this.characters[0])
   }  
-  getSearchCharacters(val: string){
-    this.rootobjectscharObservableSearch = this._dictionaryService.getSearchCharacters(val);
-  }
+ 
+
+  async searchCharacters(val: string){
+    const list: any[] = await this._dictionaryService.getSearchCharacters(val).toPromise();
+    list.forEach(item => {
+
+      //this set the name of the books based on the number at the end of url the array returns from the api
+       if(item.books !== 0){
+         for(let i = 0; i<item.books.length;i++){
+            if(item.books[i].includes('1')){
+              item.books[i] = " A Game of Thrones"
+            }
+            if(item.books[i].includes('2')){
+              item.books[i] = " A Clash of Kings"
+            }
+            if(item.books[i].includes('3')){
+              item.books[i] = " A Storm of Swords"
+            }
+            if(item.books[i].includes('4')){
+              item.books[i] = " The Hedge Knight"
+            }
+            if(item.books[i].includes('5')){
+              item.books[i] = " A Feast for Crows"
+            }
+            if(item.books[i].includes('6')){
+              item.books[i] = " The Sworn Sword"
+            }
+            if(item.books[i].includes('7')){
+              item.books[i] = " The Mystery Knight"
+            }
+            if(item.books[i].includes('8')){
+              item.books[i] = " A Dance with Dragons"
+            }
+            if(item.books[i].includes('9')){
+              item.books[i] = " The Princess and the Queen"
+            }
+            if(item.books[i].includes('10')){
+              item.books[i] = " The Rogue Prince"
+            }
+            if(item.books[i].includes('11')){
+              item.books[i] = " The World of Ice and Fire"
+            }
+            if(item.books[i].includes('12')){
+              item.books[i] = " A Knight of the Seven Kingdoms"
+            }   
+           }
+       }
+
+       if(item.books == 0){
+         item.books[0] = "See povBook(s)"
+       }
+
+        if(item.povBooks == 0){
+          item.povBooks[0] = "None"
+        }
+
+         if(item.povBooks !== 0){
+         for(let i = 0; i<item.povBooks.length;i++){
+            if(item.povBooks[i].includes('1')){
+              item.povBooks[i] = " A Game of Thrones"
+            }
+            if(item.povBooks[i].includes('2')){
+              item.povBooks[i] = " A Clash of Kings"
+            }
+            if(item.povBooks[i].includes('3')){
+              item.povBooks[i] = " A Storm of Swords"
+            }
+            if(item.povBooks[i].includes('4')){
+              item.povBooks[i] = " The Hedge Knight"
+            }
+            if(item.povBooks[i].includes('5')){
+              item.povBooks[i] = " A Feast for Crows"
+            }
+            if(item.povBooks[i].includes('6')){
+              item.povBooks[i] = " The Sworn Sword"
+            }
+            if(item.povBooks[i].includes('7')){
+              item.povBooks[i] = " The Mystery Knight"
+            }
+            if(item.povBooks[i].includes('8')){
+              item.povBooks[i] = " A Dance with Dragons"
+            }
+            if(item.povBooks[i].includes('9')){
+              item.povBooks[i] = " The Princess and the Queen"
+            }
+            if(item.povBooks[i].includes('10')){
+              item.povBooks[i] = " The Rogue Prince"
+            }
+            if(item.povBooks[i].includes('11')){
+              item.povBooks[i] = " The World of Ice and Fire"
+            }
+            if(item.povBooks[i].includes('12')){
+              item.povBooks[i] = " A Knight of the Seven Kingdoms"
+            }   
+           }
+       }
+
+      this.characterSearchArray.length = 0;
+      this.characterSearchArray.push(item)
+    })
+    }
 
  /* async getBookName(url: string){
     let bookName: string
