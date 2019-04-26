@@ -36,25 +36,53 @@ export class BookCharactersComponent {
           item.name = "No Name";
         }
         if(item.aliases == 0){ //wtf how does this even work 2 equals works but not 3
-          //console.log("xxxxx")
           item.aliases[0] = "No Alias";
         }
        if(item.books !== 0){
          for(let i = 0; i<item.books.length;i++){
-             this._dictionaryService.getBookName(item.books[i]).subscribe(data => {
-            console.log(data.name)          
-            })
+            if(item.books[i].includes('1')){
+              item.books[i] = " A Game of Thrones"
+            }
+            if(item.books[i].includes('2')){
+              item.books[i] = " A Clash of Kings"
+            }
+            if(item.books[i].includes('3')){
+              item.books[i] = " A Storm of Swords"
+            }
+            if(item.books[i].includes('4')){
+              item.books[i] = " The Hedge Knight"
+            }
+            if(item.books[i].includes('5')){
+              item.books[i] = " A Feast for Crows"
+            }
+            if(item.books[i].includes('6')){
+              item.books[i] = " The Sworn Sword"
+            }
+            if(item.books[i].includes('7')){
+              item.books[i] = " The Mystery Knight"
+            }
+            if(item.books[i].includes('8')){
+              item.books[i] = " A Dance with Dragons"
+            }
+            if(item.books[i].includes('9')){
+              item.books[i] = " The Princess and the Queen"
+            }
+            if(item.books[i].includes('10')){
+              item.books[i] = " The Rogue Prince"
+            }
+            if(item.books[i].includes('11')){
+              item.books[i] = " The World of Ice and Fire"
+            }
+            if(item.books[i].includes('12')){
+              item.books[i] = " A Knight of the Seven Kingdoms"
+            }   
            }
        }
-    
-        this.characters.push(item)
+        this.characters.push(item);
         
-      });//wtf
-
-
-    }
-    //console.log(this.characters[0])
-    
+      });//wtf   
+    }  
+    console.log(this.characters[0])
   }  
   getSearchCharacters(val: string){
     this.rootobjectscharObservableSearch = this._dictionaryService.getSearchCharacters(val);
