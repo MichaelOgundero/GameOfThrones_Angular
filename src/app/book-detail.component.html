@@ -1,17 +1,120 @@
+<mat-sidenav-container>
+  <mat-sidenav  #sidenav role="navigation">
+   <mat-nav-list>
+    <a mat-list-item>
+      <mat-icon class="icon">input</mat-icon>
+      <span class="label">Login</span>
+    </a>
+    <a mat-list-item>
+      <mat-icon class="icon">home</mat-icon>
+        <span class="label">Home</span>
+    </a>
+    <a mat-list-item>
+      <mat-icon class="icon">dashboard</mat-icon>
+      <span class="label">Dashboard</span>
+    </a>
+    <a  mat-list-item type="button">
+      <mat-icon class="icon">input</mat-icon>
+      <span class="label">LogOut</span>
+    </a>
+    </mat-nav-list>
+  </mat-sidenav>
 
-<p>
-  <button>Characters</button>
-  <span class="tab">
-    <button>Houses</button>
-  </span>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+     <div fxHide.gt-xs>
+       <button mat-icon-button>
+        <mat-icon>menu</mat-icon>
+      </button>
+    </div>
 
-</p>
+     <div>
+       <a>
+          Game of Thrones
+       </a>
+     </div>
 
-<p>
-  This is the book list page
-</p>
+     <div fxFlex fxLayout fxLayoutAlign="flex-end"  fxHide.xs>
+        <ul fxLayout fxLayoutGap="20px" class="navigation-items">
+            <li>
+                <a>
+                  <mat-icon class="icon">input</mat-icon>
+                  <span  class="label">Characters</span>
+                 </a>
+            </li>
+            <li>
+              <a >
+                  <mat-icon class="icon">home</mat-icon>
+                  <span class="label">Houses</span>
+              </a>
+            </li>
+            
+        </ul>
+     </div>
+    </mat-toolbar>
+    <main>
+    </main>
+  </mat-sidenav-content>
+
+</mat-sidenav-container>
 
 
+<div>
+  <br>
+ <input #search matInput type="search" placeholder="Search for a book...">
+ <button mat-icon-button (click)="getSearchBook(search.value)">
+    <mat-icon aria-label="Example icon-button with a heart icon">search</mat-icon>
+  </button>
+  <mat-list>
+      <mat-list-item *ngFor="let x of rootobjectsObservableSearch | async">
+
+        <h2 class="mat-title" mat-line>Book Name: </h2>
+        <h4 mat-line>{{x.name}}</h4>
+ 
+        <h2 class="mat-title" mat-line>Author(s): </h2>
+        <h4 mat-line>{{x.authors}}</h4>
+     
+        <h2 class="mat-title" mat-line>Publisher: </h2>
+        <h4 mat-line>{{x.publisher}}</h4>
+      
+        <h2 class="mat-title" mat-line>Released: </h2>
+        <h4 mat-line>{{x.released}}</h4>
+      </mat-list-item>
+  </mat-list>
+  <!--
+  <ul>
+ <li *ngFor = "let x of rootobjectsObservableSearch | async" >
+      -- Book Name: {{x.name}} <br>           
+</ul>
+-->
+
+  <div [ngSwitch]="isDetails">
+    <div *ngSwitchCase ="false">
+    <br>
+    <mat-list>
+      <h2 class="mat-title">Books</h2>
+       <mat-list-item *ngFor="let x of rootobjectsObservable | async" (click)="getBooks()" >
+          <h4 mat-line>{{x.name}}</h4>
+          <p mat-line> {{x.authors}} </p> 
+            <mat-divider></mat-divider>         
+       </mat-list-item>
+    </mat-list>
+    </div>
+
+    <div *ngSwitchCase="true">
+
+      <mat-action-list>
+        <button mat-raised-button color="primary" (click)="goBack()">Go Back</button>
+       
+      </mat-action-list>
+      <h1> heyyy </h1>
+    </div>
+  
+  
+  </div>
+</div>
+
+<!--
 <input #search placeholder="search for a book..."/>
 <button (click)="getSearchBook(search.value)">search</button>
 <ul>
@@ -20,14 +123,14 @@
   
              
 </ul>
+--->
 
-<br>
 
-<p>List of Books</p>
-<ul>
- <li *ngFor = "let x of rootobjectsObservable | async" (click)="getBooks()">
-      {{x.name}}          
-</ul>
+
+
+
+
+
 
 
 

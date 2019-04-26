@@ -3,6 +3,8 @@ import { dictionaryService } from './dictionary.service';
 import {Observable} from 'rxjs';
 import {RootObject} from './book'
 
+import 'hammerjs';
+
 
 @Component({
   selector: 'my-app',
@@ -15,6 +17,8 @@ export class BookDetailComponent  {
  private rootobjectsObservable: Observable<any[]>;
 
  private rootobjectsObservableSearch: Observable<any[]>;
+
+ private isDetails: boolean = false;
 
 
 
@@ -35,6 +39,15 @@ export class BookDetailComponent  {
   getSearchBook(val: string){
       this.rootobjectsObservableSearch = this._dictionaryService.getSearchBook(val);
     
+  }
+
+  getBooks(){
+    this.isDetails = true;
+    console.log("xxx")
+  }
+
+  goBack(){
+    this.isDetails = false;
   }
 
  

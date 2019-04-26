@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { dictionaryService } from './dictionary.service';
 import {Observable,from} from 'rxjs';
 import {RootObjectHouses} from './houses';
-import "rxjs/add/observable/of";
+
+import 'hammerjs';
 
 @Component({
   selector: 'my-app',
