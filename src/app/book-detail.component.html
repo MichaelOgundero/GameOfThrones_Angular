@@ -37,14 +37,12 @@
      <div fxFlex fxLayout fxLayoutAlign="flex-end"  fxHide.xs>
         <ul fxLayout fxLayoutGap="20px" class="navigation-items">
             <li>
-                <a>
-                  <mat-icon class="icon">input</mat-icon>
+                <a [routerLink]="['/characters']">
                   <span  class="label">Characters</span>
                  </a>
             </li>
             <li>
-              <a >
-                  <mat-icon class="icon">home</mat-icon>
+              <a [routerLink]="['/houses']">
                   <span class="label">Houses</span>
               </a>
             </li>
@@ -61,11 +59,23 @@
 
 <div>
   <br>
- <input #search matInput type="search" placeholder="Search for a book...">
- <button mat-icon-button (click)="getSearchBook(search.value)">
-    <mat-icon aria-label="Example icon-button with a heart icon">search</mat-icon>
-  </button>
-  <mat-list>
+
+  <!--
+  <ul>
+ <li *ngFor = "let x of rootobjectsObservableSearch | async" >
+      -- Book Name: {{x.name}} <br>           
+</ul>
+-->
+
+  <div [ngSwitch]="isDetails">
+    <div *ngSwitchCase ="false">
+    <br>
+
+     <input #search matInput type="search" placeholder="Search for a book...">
+       <button mat-icon-button (click)="getSearchBook(search.value)">
+          <mat-icon aria-label="Example icon-button with a heart icon">search</mat-icon>
+       </button>
+     <mat-list>
       <mat-list-item *ngFor="let x of rootobjectsObservableSearch | async">
 
         <h2 class="mat-title" mat-line>Book Name: </h2>
@@ -77,25 +87,30 @@
         <h2 class="mat-title" mat-line>Publisher: </h2>
         <h4 mat-line>{{x.publisher}}</h4>
       
-        <h2 class="mat-title" mat-line>Released: </h2>
-        <h4 mat-line>{{x.released}}</h4>
-      </mat-list-item>
-  </mat-list>
-  <!--
-  <ul>
- <li *ngFor = "let x of rootobjectsObservableSearch | async" >
-      -- Book Name: {{x.name}} <br>           
-</ul>
--->
+        <h2 class="mat-title" mat-line>Release Date: </h2>
+        <h4 mat-line>{{x.released | date}}</h4>
 
-  <div [ngSwitch]="isDetails">
-    <div *ngSwitchCase ="false">
-    <br>
+        <h2 class="mat-title" mat-line>Country: </h2>
+        <h4 mat-line>{{x.country}}</h4>
+
+        <h2 class="mat-title" mat-line>Book Type: </h2>
+        <h4 mat-line>{{x.mediaType}}</h4>
+
+        <h2 class="mat-title" mat-line>Number of Pages: </h2>
+        <h4 mat-line>{{x.numberOfPages}}</h4>
+
+        <h2 class="mat-title" mat-line>ISBN: </h2>
+        <h4 mat-line>{{x.isbn}}</h4>
+       
+
+      </mat-list-item>
+    </mat-list>
+
     <mat-list>
       <h2 class="mat-title">Books</h2>
-       <mat-list-item *ngFor="let x of rootobjectsObservable | async" (click)="getBooks()" >
-          <h4 mat-line>{{x.name}}</h4>
-          <p mat-line> {{x.authors}} </p> 
+       <mat-list-item *ngFor="let book of rootobjectsObservable | async" (click)="getBooks(book)" >
+          <h4 mat-line>{{book.name}}</h4>
+          <p mat-line> {{book.authors}} </p> 
             <mat-divider></mat-divider>         
        </mat-list-item>
     </mat-list>
@@ -104,10 +119,45 @@
     <div *ngSwitchCase="true">
 
       <mat-action-list>
-        <button mat-raised-button color="primary" (click)="goBack()">Go Back</button>
-       
+        <button mat-raised-button color="primary" (click)="goBack()">Go Back</button> 
       </mat-action-list>
-      <h1> heyyy </h1>
+
+    <div *ngIf="selectedBook">
+      <br>
+      <br>
+      <h2 class="mat-title" mat-line>{{selectedBook.name | uppercase}} </h2>
+      <h4 class="mat-h4" mat-line>Author(s):
+        <span class="mat-h4" mat-line>{{selectedBook.authors}}</span>
+      </h4>
+
+      <h4 class="mat-h4" mat-line>Publisher:
+        <span class="mat-h4" mat-line>{{selectedBook.publisher}}</span>
+      </h4>
+
+      <h4 class="mat-h4" mat-line>Release Date:
+        <span class="mat-h4" mat-line>{{selectedBook.released | date}}</span>
+      </h4>
+
+      <h4 class="mat-h4" mat-line>Country:
+        <span class="mat-h4" mat-line>{{selectedBook.country}}</span>
+      </h4>
+
+      <h4 class="mat-h4" mat-line>Book Type:
+        <span class="mat-h4" mat-line>{{selectedBook.mediaType}}</span>
+      </h4>
+
+      <h4 class="mat-h4" mat-line>Number of Pages:
+        <span class="mat-h4" mat-line>{{selectedBook.numberOfPages}}</span>
+      </h4>
+
+      <h4 class="mat-h4" mat-line>ISBN:
+        <span class="mat-h4" mat-line>{{selectedBook.isbn}}</span>
+      </h4>
+
+
+
+    </div>
+    
     </div>
   
   

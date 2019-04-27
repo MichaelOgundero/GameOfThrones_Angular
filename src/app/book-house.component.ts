@@ -19,24 +19,45 @@ export class BookHouseComponent{
 
   private rootobjectshouseObservableSearch: Observable<any[]>[];
 
+   private isDetails: boolean = false;
+
+  selectedHouse: RootObjectHouses;
+
+
+
   constructor(private _dictionaryService: dictionaryService){
 
     this.getHouses();
-     // this.rootobjectshouseObservable = this._dictionaryService.getHouses(1);
+    
+      //this.rootobjectshouseObservable = this._dictionaryService.getHouses(1);
     
   }
 
 
-  async getHouses(){
-
+  async getHouses(house: RootObjectHouses){
+      this.isDetails = true;
+      
+     
       for(let i = 1; i<10; ++i){
        const list:any[] =    await this._dictionaryService.getHouses(i).toPromise();    //the promise promises theres going to be a value in it in the future
         list.forEach( item => this.houses.push(item));
       }
+
+
+     this.selectedHouse = house;
+      
   }
 
   getSearchHouses(val: string){
     this.rootobjectshouseObservableSearch = this._dictionaryService.getSearchHouses(val);
+  }
+
+
+ 
+
+  goBack(){
+    this.isDetails = false;
+    this.selectedHouse = null;
   }
 
   

@@ -1,35 +1,208 @@
 
+<mat-sidenav-container>
+  <mat-sidenav  #sidenav role="navigation">
+   <mat-nav-list>
+    <a mat-list-item>
+      <mat-icon class="icon">input</mat-icon>
+      <span class="label">Login</span>
+    </a>
+    <a mat-list-item>
+      <mat-icon class="icon">home</mat-icon>
+        <span class="label">Home</span>
+    </a>
+    <a mat-list-item>
+      <mat-icon class="icon">dashboard</mat-icon>
+      <span class="label">Dashboard</span>
+    </a>
+    <a  mat-list-item type="button">
+      <mat-icon class="icon">input</mat-icon>
+      <span class="label">LogOut</span>
+    </a>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+     <div fxHide.gt-xs>
+       <button mat-icon-button>
+        <mat-icon>menu</mat-icon>
+      </button>
+    </div>
+
+     <div>
+       <a>
+          Game of Thrones
+       </a>
+     </div>
+
+     <div fxFlex fxLayout fxLayoutAlign="flex-end"  fxHide.xs>
+        <ul fxLayout fxLayoutGap="20px" class="navigation-items">
+            <li>
+                <a [routerLink]="['/characters']">
+                  <span  class="label">Characters</span>
+                 </a>
+            </li>
+            <li>
+              <a [routerLink]="['/books']">
+                  <span class="label">Books</span>
+              </a>
+            </li>
+            
+        </ul>
+     </div>
+    </mat-toolbar>
+    <main>
+    </main>
+  </mat-sidenav-content>
+
+</mat-sidenav-container>
+
+<div>
+  <div [ngSwitch] = "isDetails">
+    <div *ngSwitchCase="false">
+      <br>
+
+        <input #search matInput type="search" placeholder="search for a house...">
+        <button mat-icon-button (click)="getSearchHouses(search.value)">
+          <mat-icon aria-label="Example icon-button with a heart icon">search</mat-icon>
+        </button>
+        <mat-list>
+          <mat-list-item *ngFor = "let house of rootobjectshouseObservableSearch | async">
+            <h2 class="mat-title" mat-line>House Name: </h2>
+            <h4 mat-line>{{house.name}}</h4>
+
+            <h2 class="mat-title" mat-line>Region: </h2>
+            <h4 mat-line>{{house.region}}</h4>
+
+            <h2 class="mat-title" mat-line>Coat of Arms: </h2>
+            <h4 mat-line>{{house.coatOfArms}}</h4>
+
+            <h2 class="mat-title" mat-line>Words: </h2>
+            <h4 mat-line>{{house.words}}</h4>
+
+            <h2 class="mat-title" mat-line>Titles: </h2>
+            <h4 mat-line>{{house.titles}}</h4>
+
+            <h2 class="mat-title" mat-line>Seats: </h2>
+            <h4 mat-line>{{house.seats}}</h4>
+
+            <h2 class="mat-title" mat-line>Current Lord: </h2>
+            <h4 mat-line>{{house.currentLord}}</h4>
+
+            <h2 class="mat-title" mat-line>Heir: </h2>
+            <h4 mat-line>{{house.heir}}</h4>
+
+            <h2 class="mat-title" mat-line>Overlord: </h2>
+            <h4 mat-line>{{house.pverlord}}</h4>
+
+            <h2 class="mat-title" mat-line>Founded: </h2>
+            <h4 mat-line>{{house.founded}}</h4>
+
+            <h2 class="mat-title" mat-line>Founder: </h2>
+            <h4 mat-line>{{house.founder}}</h4>
+
+            <h2 class="mat-title" mat-line>Died out: </h2>
+            <h4 mat-line>{{house.coatOfArms}}</h4>
+
+            <h2 class="mat-title" mat-line>Ancestral Weapons: </h2>
+            <h4 mat-line>{{house.ancestralWeapons}}</h4>
+
+            <h2 class="mat-title" mat-line>Cadet Branches: </h2>
+            <h4 mat-line>{{house.cadetBranches}}</h4>
+
+            <h2 class="mat-title" mat-line>Sworn Members: </h2>
+            <h4 mat-line>{{house.swornMembers}}</h4>
 
 
+          </mat-list-item>
+        </mat-list>
 
 
+      <mat-list>
+       <h2 class="mat-title">Houses</h2>
+         <mat-list-item *ngFor = "let house of houses" (click)="getHouses(house)" >
+            <h4 mat-line>{{house.name}}</h4>
+              <mat-divider></mat-divider>         
+         </mat-list-item>
+      </mat-list>
+    </div>
+
+    <div *ngSwitchCase="true">
+      <mat-action-list>
+        <button mat-raised-button color="primary" (click)="goBack()">Go Back</button> 
+      </mat-action-list>
+      <div *ngIf="selectedHouse">
+        <br>
+        <h2 class="mat-title" mat-line>{{selectedHouse.name | uppercase}} </h2>
+        <h4 class="mat-h4" mat-line>Region:
+          <span class="mat-h4" mat-line>{{selectedHouse.region}}</span>
+        </h4>
+
+        <h4 class="mat-h4" mat-line>Coat of Arms:
+          <span class="mat-h4" mat-line>{{selectedHouse.coatOfArms}}</span>
+        </h4>
+
+        <h4 class="mat-h4" mat-line> Words:
+          <span class="mat-h4" mat-line>{{selectedHouse.words}}</span>
+        </h4>
+
+        <h4 class="mat-h4" mat-line> Titles:
+          <span class="mat-h4" mat-line>{{selectedHouse.titles}}</span>
+        </h4>
+
+        <h4 class="mat-h4" mat-line> Seats:
+          <span class="mat-h4" mat-line>{{selectedHouse.seats}}</span>
+        </h4>
+
+        <h4 class="mat-h4" mat-line> Current Lord:
+          <span class="mat-h4" mat-line>{{selectedHouse.currentLord}}</span>
+        </h4>
+
+        <h4 class="mat-h4" mat-line> Heir:
+          <span class="mat-h4" mat-line>{{selectedHouse.heir}}</span>
+        </h4>
+        
+        <h4 class="mat-h4" mat-line> Overlord:
+          <span class="mat-h4" mat-line>{{selectedHouse.overlord}}</span>
+        </h4>
+
+        <h4 class="mat-h4" mat-line> Founded:
+          <span class="mat-h4" mat-line>{{selectedHouse.founded}}</span>
+        </h4>
+
+        <h4 class="mat-h4" mat-line> Founder:
+          <span class="mat-h4" mat-line>{{selectedHouse.founder}}</span>
+        </h4>
+
+        <h4 class="mat-h4" mat-line> Died out:
+          <span class="mat-h4" mat-line>{{selectedHouse.diedOut}}</span>
+        </h4>
+
+        <h4 class="mat-h4" mat-line> Ancestral Weapons:
+          <span class="mat-h4" mat-line>{{selectedHouse.ancestralWeapons}}</span>
+        </h4>
+
+        <h4 class="mat-h4" mat-line> Cadet Branches:
+          <span class="mat-h4" mat-line>{{selectedHouse.cadetBranches}}</span>
+        </h4>
+
+        <h4 class="mat-h4" mat-line> Sworn Members:
+          <span class="mat-h4" mat-line>{{selectedHouse.swornMembers}}<br></span>
+        </h4>
+
+        
 
 
+      </div>
+    </div>
 
-<p>
-  <button>Characters</button>
-  <span class="tab">
-    <button>Books</button>
-  </span>
-
-</p>
-
-<input #search placeholder="search for a house..."/>
-<button (click)="getSearchHouses(search.value)">search</button>
-<ul>
- <li *ngFor = "let x of rootobjectshouseObservableSearch | async" >
-      -- House Name: {{x.name}} <br>
-  
-             
-</ul>
+    
 
 
+  </div>
+</div>
 
-<p>List of Houses</p>
-<ul>
- <li *ngFor = "let x of houses" (click)="getHouses()">
-      {{x.name}}          
-</ul>
+
 
 
 

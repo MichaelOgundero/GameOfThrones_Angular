@@ -21,13 +21,21 @@ export class BookCharactersComponent {
 
   private rootobjectscharObservableSearch: Observable<any[]>;
 
+  private isDetails: boolean = false;
+
+  selectedCharacter: RootObjectCharacters;
+
+
+
   constructor(private _dictionaryService: dictionaryService){
     this.getCharacters();
 
 
   }
 
-  async getCharacters(){
+  async getCharacters(character: RootObjectCharacters){
+    this.isDetails = true;
+
     for(let i = 1; i<44; i++){
       const list:any[] = await this._dictionaryService.getCharacters(i).toPromise();
       list.forEach(item => {   
@@ -125,7 +133,7 @@ export class BookCharactersComponent {
         
       });//wtf   
     }  
-    console.log(this.characters[0])
+    this.selectedCharacter = character;
   }  
  
 
@@ -227,6 +235,12 @@ export class BookCharactersComponent {
       this.characterSearchArray.length = 0;
       this.characterSearchArray.push(item)
     })
+    }
+
+
+    goBack(){
+      this.isDetails = false;
+      this.selectedCharacter = null;
     }
 
  /* async getBookName(url: string){

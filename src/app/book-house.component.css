@@ -1,24 +1,73 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-p {
-  font-family: Lato;
+body {
+  margin: 0;
+}
+mat-sidenav-container, mat-sidenav-content, mat-sidenav {
+  height: 100%;
 }
 
-.tab { 
-       display:inline-block; 
-       margin-left: 20px; 
+mat-sidenav {
+  width: 250px;
 }
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+a:hover,
+a:active {
+  color: lightgray;
+}
+
+.navigation-items {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+}
+
+.icon {
+  display: inline-block;
+  height: 30px;
+  margin: 0 auto;
+  padding-right: 5px;
+  text-align: center;
+  vertical-align: middle;
+  width: 15%;
+}
+
+.label {
+  display: inline-block;
+  line-height: 30px;
+  margin: 0;
+  width: 85%;
+}
+
+.mat-title{
+   font-size: 24px;
+    color: rgb(0, 51, 128);
+    padding-left: 5px;
+  
+}
+
+.mat-h4{
+  font-size: 18px;
+  color: black;
+  padding-left: 5px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

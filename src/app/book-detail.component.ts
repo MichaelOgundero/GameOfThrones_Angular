@@ -20,6 +20,8 @@ export class BookDetailComponent  {
 
  private isDetails: boolean = false;
 
+ selectedBook: RootObject;
+
 
 
 
@@ -41,13 +43,15 @@ export class BookDetailComponent  {
     
   }
 
-  getBooks(){
+  getBooks(book: RootObject){
     this.isDetails = true;
-    console.log("xxx")
+    this.selectedBook = book;
+    //console.log("xxx")
   }
 
   goBack(){
     this.isDetails = false;
+    this.selectedBook = null;
   }
 
  

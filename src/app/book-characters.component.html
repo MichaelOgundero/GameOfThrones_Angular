@@ -1,4 +1,211 @@
+<mat-sidenav-container>
+  <mat-sidenav  #sidenav role="navigation">
+   <mat-nav-list>
+    <a mat-list-item>
+      <mat-icon class="icon">input</mat-icon>
+      <span class="label">Login</span>
+    </a>
+    <a mat-list-item>
+      <mat-icon class="icon">home</mat-icon>
+        <span class="label">Home</span>
+    </a>
+    <a mat-list-item>
+      <mat-icon class="icon">dashboard</mat-icon>
+      <span class="label">Dashboard</span>
+    </a>
+    <a  mat-list-item type="button">
+      <mat-icon class="icon">input</mat-icon>
+      <span class="label">LogOut</span>
+    </a>
+    </mat-nav-list>
+  </mat-sidenav>
 
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+     <div fxHide.gt-xs>
+       <button mat-icon-button>
+        <mat-icon>menu</mat-icon>
+      </button>
+    </div>
+
+     <div>
+       <a>
+          Game of Thrones
+       </a>
+     </div>
+
+     <div fxFlex fxLayout fxLayoutAlign="flex-end"  fxHide.xs>
+        <ul fxLayout fxLayoutGap="20px" class="navigation-items">
+            <li>
+                <a [routerLink]="['/books']">
+                  <span  class="label">Books</span>
+                 </a>
+            </li>
+            <li>
+              <a [routerLink]="['/houses']">
+                  <span class="label">Houses</span>
+              </a>
+            </li>
+            
+        </ul>
+     </div>
+    </mat-toolbar>
+    <main>
+    </main>
+  </mat-sidenav-content>
+
+</mat-sidenav-container>
+
+<div>
+  <div [ngSwitch] = "isDetails">
+    <div *ngSwitchCase="false">
+      <br>
+        <input #search matInput type="search" placeholder="Search for a character...">
+        <button mat-icon-button (click)="searchCharacters(search.value)">
+          <mat-icon aria-label="Example icon-button with a heart icon">search</mat-icon>
+        </button>
+          <mat-list>
+            <mat-list-item *ngFor = "let character of characterSearchArray ">
+               <h2 class="mat-title" mat-line>Character Name: </h2>
+               <h4 mat-line>{{character.name}}</h4>
+
+               <h2 class="mat-title" mat-line>Gender: </h2>
+               <h4 mat-line>{{character.gender}}</h4>
+
+               <h2 class="mat-title" mat-line>Culture: </h2>
+               <h4 mat-line>{{character.culture}}</h4>
+
+               <h2 class="mat-title" mat-line>Born: </h2>
+               <h4 mat-line>{{character.born}}</h4>
+
+               <h2 class="mat-title" mat-line>Died: </h2>
+               <h4 mat-line>{{character.died}}</h4>
+
+               <h2 class="mat-title" mat-line>Titles: </h2>
+               <h4 mat-line>{{character.titles}}</h4>
+
+               <h2 class="mat-title" mat-line>Aliases: </h2>
+               <h4 mat-line>{{character.aliases}}</h4>
+
+               <h2 class="mat-title" mat-line>Father: </h2>
+               <h4 mat-line>{{character.father}}</h4>
+
+               <h2 class="mat-title" mat-line>Mother: </h2>
+               <h4 mat-line>{{character.mother}}</h4>
+
+               <h2 class="mat-title" mat-line>Spouse: </h2>
+               <h4 mat-line>{{character.spoouse}}</h4>
+
+               <h2 class="mat-title" mat-line>Allegiances: </h2>
+               <h4 mat-line>{{character.allegiances}}</h4>
+
+               <h2 class="mat-title" mat-line>Books: </h2>
+               <h4 mat-line>{{character.books}}</h4>
+
+               <h2 class="mat-title" mat-line>POV Books: </h2>
+               <h4 mat-line>{{character.povBooks}}</h4>
+
+               <h2 class="mat-title" mat-line>TV Series: </h2>
+               <h4 mat-line>{{character.tvSeries}}</h4>
+
+               <h2 class="mat-title" mat-line>Played By: </h2>
+               <h4 mat-line>{{character.playedBy}}</h4>
+
+
+            </mat-list-item>
+
+
+          </mat-list>
+
+      <mat-list>
+        <h2 class="mat-title">Characters</h2>
+           <mat-list-item *ngFor = "let character of characters" (click)="getCharacters(character)" >
+             <h4 mat-line>{{character.name}}</h4>
+             <p mat-line> {{character.aliases}} </p> 
+               <mat-divider></mat-divider>         
+          </mat-list-item>
+       </mat-list>
+    </div>
+
+    <div *ngSwitchCase="true"> 
+      <mat-action-list>
+        <button mat-raised-button color="primary" (click)="goBack()">Go Back</button> 
+      </mat-action-list>
+      <div *ngIf="selectedCharacter">
+        <br>
+        <h2 class="mat-title" mat-line>{{selectedCharacter.name | uppercase}} </h2>
+        <h4 class="mat-h4" mat-line>Alias:
+          <span class="mat-h4" mat-line>{{selectedCharacter.aliases}}</span>
+        </h4>
+
+        <h4 class="mat-h4" mat-line>Gender:
+          <span class="mat-h4" mat-line>{{selectedCharacter.gender}}</span>
+        </h4>
+
+        <h4 class="mat-h4" mat-line>Culture:
+          <span class="mat-h4" mat-line>{{selectedCharacter.culture}}</span>
+        </h4>
+
+        <h4 class="mat-h4" mat-line>Born:
+          <span class="mat-h4" mat-line>{{selectedCharacter.born}}</span>
+        </h4>
+
+        <h4 class="mat-h4" mat-line>Died:
+          <span class="mat-h4" mat-line>{{selectedCharacter.died}}</span>
+        </h4>
+
+        <h4 class="mat-h4" mat-line>Titles:
+          <span class="mat-h4" mat-line>{{selectedCharacter.titles}}</span>
+        </h4>
+
+        <h4 class="mat-h4" mat-line>Father:
+          <span class="mat-h4" mat-line>{{selectedCharacter.father}}</span>
+        </h4>
+
+        <h4 class="mat-h4" mat-line>Mother:
+          <span class="mat-h4" mat-line>{{selectedCharacter.mother}}</span>
+        </h4>
+
+        <h4 class="mat-h4" mat-line>Spouse:
+          <span class="mat-h4" mat-line>{{selectedCharacter.spouse}}</span>
+        </h4>
+
+        <h4 class="mat-h4" mat-line>Allegiances:
+          <span class="mat-h4" mat-line>{{selectedCharacter.allegiances}}</span>
+        </h4>
+
+        <h4 class="mat-h4" mat-line>Books:
+          <span class="mat-h4" mat-line>{{selectedCharacter.books}}</span>
+        </h4>
+
+        <h4 class="mat-h4" mat-line>POV Books:
+          <span class="mat-h4" mat-line>{{selectedCharacter.povBooks}}</span>
+        </h4>
+
+        <h4 class="mat-h4" mat-line>TV Series:
+          <span class="mat-h4" mat-line>{{selectedCharacter.tvSeries}}</span>
+        </h4>
+
+        <h4 class="mat-h4" mat-line>Played By:
+          <span class="mat-h4" mat-line>{{selectedCharacter.playedBy}}</span>
+        </h4>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+<!--
 <p>
   <button>Books</button>
   <span class="tab">
@@ -39,3 +246,4 @@
   
   
 </ul>
+-->

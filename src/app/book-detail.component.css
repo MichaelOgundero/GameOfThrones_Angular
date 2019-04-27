@@ -49,17 +49,12 @@ a:active {
    font-size: 24px;
     color: rgb(0, 51, 128);
     padding-left: 5px;
+  
 }
 
-
-
-
-
-p {
-  font-family: Lato;
+.mat-h4{
+  font-size: 18px;
+  color: black;
+  padding-left: 5px;
 }
 
-.tab { 
-       display:inline-block; 
-       margin-left: 20px; 
-}
