@@ -33,8 +33,8 @@ export class BookCharactersComponent {
 
   }
 
-  async getCharacters(character: RootObjectCharacters){
-    this.isDetails = true;
+  async getCharacters(){
+ 
 
     for(let i = 1; i<44; i++){
       const list:any[] = await this._dictionaryService.getCharacters(i).toPromise();
@@ -133,7 +133,7 @@ export class BookCharactersComponent {
         
       });//wtf   
     }  
-    this.selectedCharacter = character;
+  
   }  
  
 
@@ -241,6 +241,11 @@ export class BookCharactersComponent {
     goBack(){
       this.isDetails = false;
       this.selectedCharacter = null;
+    }
+
+    getCharacter(character: RootObjectCharacters){
+        this.isDetails = true;
+        this.selectedCharacter = character;
     }
 
  /* async getBookName(url: string){

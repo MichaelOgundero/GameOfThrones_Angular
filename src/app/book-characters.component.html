@@ -121,7 +121,7 @@
 
       <mat-list>
         <h2 class="mat-title">Characters</h2>
-           <mat-list-item *ngFor = "let character of characters" (click)="getCharacters(character)" >
+           <mat-list-item *ngFor = "let character of characters" (click)="getCharacter(character)" >
              <h4 mat-line>{{character.name}}</h4>
              <p mat-line> {{character.aliases}} </p> 
                <mat-divider></mat-divider>         
