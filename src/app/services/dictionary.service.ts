@@ -38,7 +38,7 @@ export class dictionaryService {
     return this.httpclient.get(url);
   }
 
-  getBookName(url: string){
+  getUrlInfo(url: string){
     return this.httpclient.get(url);
   }
 
