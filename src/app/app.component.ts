@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { dictionaryService } from './dictionary.service';
+import { dictionaryService } from './services/dictionary.service';
 
 
 

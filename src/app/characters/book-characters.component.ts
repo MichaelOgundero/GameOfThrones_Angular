@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
-import { dictionaryService } from './dictionary.service';
+import { dictionaryService } from '../services/dictionary.service';
 import {Observable} from 'rxjs';
-import {RootObjectCharacters} from './characters';
+import {RootObjectCharacters} from '../models/characters';
 
 
 @Component({
   selector: 'my-app',
-  templateUrl: './book-characters.component.html',
-  styleUrls: [ './book-characters.component.css' ]
+  templateUrl: '../characters/book-characters.component.html',
+  styleUrls: [ '../characters/book-characters.component.css' ]
 })
 export class BookCharactersComponent {
   private rootobjectschar: RootObjectCharacters[] = [];

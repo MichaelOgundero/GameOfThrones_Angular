@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { dictionaryService } from './dictionary.service';
+import { dictionaryService } from '../services/dictionary.service';
 import {Observable,from} from 'rxjs';
-import {RootObjectHouses} from './houses';
+import {RootObjectHouses} from '../models/houses';
 
 import 'hammerjs';
 
 @Component({
   selector: 'my-app',
-  templateUrl: './book-house.component.html',
-  styleUrls: [ './book-house.component.css' ]
+  templateUrl: '../houses/book-house.component.html',
+  styleUrls: [ '../houses/book-house.component.css' ]
 })
 export class BookHouseComponent{
 

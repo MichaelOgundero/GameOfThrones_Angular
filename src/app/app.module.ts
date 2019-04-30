@@ -5,13 +5,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { dictionaryService } from './dictionary.service';
+import { dictionaryService } from './services/dictionary.service';
 import { HelloComponent } from './hello.component';
 
 import { AppRoutingModule } from './app-routing.module';
-import { BookDetailComponent } from './book-detail.component';
-import { BookCharactersComponent } from './book-characters.component';
-import { BookHouseComponent } from './book-house.component';
+import { BookDetailComponent } from './books/book-detail.component';
+import { BookCharactersComponent } from './characters/book-characters.component';
+import { BookHouseComponent } from './houses/book-house.component';
 
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';

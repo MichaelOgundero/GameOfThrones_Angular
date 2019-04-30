@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { BookDetailComponent } from './book-detail.component';
+import { BookDetailComponent } from './books/book-detail.component';
 
-import { BookCharactersComponent } from './book-characters.component';
+import { BookCharactersComponent } from './characters/book-characters.component';
 
-import { BookHouseComponent } from './book-house.component';
+import { BookHouseComponent } from './houses/book-house.component';
 
 
 const appRoutes: Routes = [
