@@ -1,3 +1,3 @@
 # angular-yhrf3u
 
-[Edit on StackBlitz ⚡️](https://gameofthrones.stackblitz.io)
+[Edit on StackBlitz ⚡️](https://stackblitz.com/edit/gameofthrones)
