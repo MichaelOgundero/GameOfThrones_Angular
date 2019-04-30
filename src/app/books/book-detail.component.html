@@ -108,7 +108,7 @@
 
     <mat-list>
       <h2 class="mat-title">Books</h2>
-       <mat-list-item *ngFor="let book of rootobjectsObservable | async" (click)="getBooks(book)" >
+       <mat-list-item *ngFor="let book of books" (click)="getBook(book)" >
           <h4 mat-line>{{book.name}}</h4>
           <p mat-line> {{book.authors}} </p> 
             <mat-divider></mat-divider>         

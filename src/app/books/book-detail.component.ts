@@ -22,14 +22,12 @@ export class BookDetailComponent  {
 
  selectedBook: RootObject;
 
-
-
+ public books: any[] = [];
 
 
   constructor(private _dictionaryService: dictionaryService){
 
-
-    this.rootobjectsObservable = this._dictionaryService.getBooks();
+   this.getBooks();
     
   
   }
@@ -38,12 +36,21 @@ export class BookDetailComponent  {
     console.log(this._dictionaryService.getSearchBook("A Game Of Thrones"))
   }
 
+
+
   getSearchBook(val: string){
       this.rootobjectsObservableSearch = this._dictionaryService.getSearchBook(val);
     
   }
 
-  getBooks(book: RootObject){
+  async getBooks(){
+      for(let i=1; i<2; i++){
+        const list: any[] = await this._dictionaryService.getBooks(i).toPromise();
+        list.forEach(item => this.books.push(item));
+      }
+  }
+
+  getBook(book: RootObject){
     this.isDetails = true;
     this.selectedBook = book;
     //console.log("xxx")

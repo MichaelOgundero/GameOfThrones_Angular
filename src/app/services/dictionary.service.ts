@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs'
-import "rxjs/add/observable/of";
-import { RootObjectHouses } from './houses';
+
+
 
 @Injectable()
 export class dictionaryService {
   constructor(private httpclient: HttpClient) { }
 
-  getBooks() {
-    let url = "https://www.anapioficeandfire.com/api/books/?page=1&pageSize=50";
+  getBooks(val: number) {
+    let url = "https://www.anapioficeandfire.com/api/books/?page="+val+"&pageSize=50";
     return this.httpclient.get(url);
   }
 
