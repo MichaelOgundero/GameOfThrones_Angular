@@ -45,94 +45,67 @@ export class BookCharactersComponent {
         if(item.aliases == 0){ 
           item.aliases[0] = "No Alias";
         }
-       if(item.books !== 0){
-         for(let i = 0; i<item.books.length;i++){
-            if(item.books[i].includes('1')){
-              item.books[i] = " A Game of Thrones"
-            }
-            if(item.books[i].includes('2')){
-              item.books[i] = " A Clash of Kings"
-            }
-            if(item.books[i].includes('3')){
-              item.books[i] = " A Storm of Swords"
-            }
-            if(item.books[i].includes('4')){
-              item.books[i] = " The Hedge Knight"
-            }
-            if(item.books[i].includes('5')){
-              item.books[i] = " A Feast for Crows"
-            }
-            if(item.books[i].includes('6')){
-              item.books[i] = " The Sworn Sword"
-            }
-            if(item.books[i].includes('7')){
-              item.books[i] = " The Mystery Knight"
-            }
-            if(item.books[i].includes('8')){
-              item.books[i] = " A Dance with Dragons"
-            }
-            if(item.books[i].includes('9')){
-              item.books[i] = " The Princess and the Queen"
-            }
-            if(item.books[i].includes('10')){
-              item.books[i] = " The Rogue Prince"
-            }
-            if(item.books[i].includes('11')){
-              item.books[i] = " The World of Ice and Fire"
-            }
-            if(item.books[i].includes('12')){
-              item.books[i] = " A Knight of the Seven Kingdoms"
-            }   
-           }
-       }
-        
+      
         if(item.povBooks == 0){
           item.povBooks[0] = "None"
         }
-         if(item.povBooks !== 0){
-         for(let i = 0; i<item.povBooks.length;i++){
-            if(item.povBooks[i].includes('1')){
-              item.povBooks[i] = " A Game of Thrones"
-            }
-            if(item.povBooks[i].includes('2')){
-              item.povBooks[i] = " A Clash of Kings"
-            }
-            if(item.povBooks[i].includes('3')){
-              item.povBooks[i] = " A Storm of Swords"
-            }
-            if(item.povBooks[i].includes('4')){
-              item.povBooks[i] = " The Hedge Knight"
-            }
-            if(item.povBooks[i].includes('5')){
-              item.povBooks[i] = " A Feast for Crows"
-            }
-            if(item.povBooks[i].includes('6')){
-              item.povBooks[i] = " The Sworn Sword"
-            }
-            if(item.povBooks[i].includes('7')){
-              item.povBooks[i] = " The Mystery Knight"
-            }
-            if(item.povBooks[i].includes('8')){
-              item.povBooks[i] = " A Dance with Dragons"
-            }
-            if(item.povBooks[i].includes('9')){
-              item.povBooks[i] = " The Princess and the Queen"
-            }
-            if(item.povBooks[i].includes('10')){
-              item.povBooks[i] = " The Rogue Prince"
-            }
-            if(item.povBooks[i].includes('11')){
-              item.povBooks[i] = " The World of Ice and Fire"
-            }
-            if(item.povBooks[i].includes('12')){
-              item.povBooks[i] = " A Knight of the Seven Kingdoms"
-            }   
-           }
-       }
+
+        if(item.povBooks !==0){
+          for(let i=0; i<item.povBooks.length; i++){
+            let url = item.povBooks[i];
+            this._dictionaryService.getUrlInfo(url).subscribe(data => {
+              item.povBooks[i] = data.name
+            })
+          }
+        }
+
+        if(item.books !==0){
+          for(let i=0; i<item.books.length; i++){
+            let url = item.books[i];
+            this._dictionaryService.getUrlInfo(url).subscribe(data => {
+              item.books[i] = data.name;
+            })
+          }
+        }
+
+        if(item.allegiances !==0){
+          for(let i=0; i<item.allegiances.length;i++){
+            let url = item.allegiances[i];
+            this._dictionaryService.getUrlInfo(url).subscribe(data => {
+              item.allegiances[i] = data.name;
+            })
+          }
+        }
+
+        if(item.spouse !==0){
+          for(let i=0; i<item.spouse.length; i++){
+            let url = item.spouse[i];
+            this._dictionaryService.getUrlInfo(url).subscribe(data => {
+              item.spouse[i] = data.name;
+            })
+          }
+        }
+
+        if(item.father != ""){
+          let url = item.father;
+          this._dictionaryService.getUrlInfo(url).subscribe(data => {
+            item.father = data.name
+          })
+        }
+
+        if(item.mother != ""){
+          let url = item.mother;
+          this._dictionaryService.getUrlInfo(url).subscribe(data => {
+            item.mother = data.name;
+          })
+        }
+         
+
         this.characters.push(item);
         
-      });//wtf   
-    }  
+       }); 
+    }
+      
   
   }  
  
@@ -142,46 +115,7 @@ export class BookCharactersComponent {
     list.forEach(item => {
 
       //this set the name of the books based on the number at the end of url the array returns from the api
-       if(item.books !== 0){
-         for(let i = 0; i<item.books.length;i++){
-            if(item.books[i].includes('1')){
-              item.books[i] = " A Game of Thrones"
-            }
-            if(item.books[i].includes('2')){
-              item.books[i] = " A Clash of Kings"
-            }
-            if(item.books[i].includes('3')){
-              item.books[i] = " A Storm of Swords"
-            }
-            if(item.books[i].includes('4')){
-              item.books[i] = " The Hedge Knight"
-            }
-            if(item.books[i].includes('5')){
-              item.books[i] = " A Feast for Crows"
-            }
-            if(item.books[i].includes('6')){
-              item.books[i] = " The Sworn Sword"
-            }
-            if(item.books[i].includes('7')){
-              item.books[i] = " The Mystery Knight"
-            }
-            if(item.books[i].includes('8')){
-              item.books[i] = " A Dance with Dragons"
-            }
-            if(item.books[i].includes('9')){
-              item.books[i] = " The Princess and the Queen"
-            }
-            if(item.books[i].includes('10')){
-              item.books[i] = " The Rogue Prince"
-            }
-            if(item.books[i].includes('11')){
-              item.books[i] = " The World of Ice and Fire"
-            }
-            if(item.books[i].includes('12')){
-              item.books[i] = " A Knight of the Seven Kingdoms"
-            }   
-           }
-       }
+       
 
        if(item.books == 0){
          item.books[0] = "See povBook(s)"
@@ -191,46 +125,55 @@ export class BookCharactersComponent {
           item.povBooks[0] = "None"
         }
 
-         if(item.povBooks !== 0){
-         for(let i = 0; i<item.povBooks.length;i++){
-            if(item.povBooks[i].includes('1')){
-              item.povBooks[i] = " A Game of Thrones"
-            }
-            if(item.povBooks[i].includes('2')){
-              item.povBooks[i] = " A Clash of Kings"
-            }
-            if(item.povBooks[i].includes('3')){
-              item.povBooks[i] = " A Storm of Swords"
-            }
-            if(item.povBooks[i].includes('4')){
-              item.povBooks[i] = " The Hedge Knight"
-            }
-            if(item.povBooks[i].includes('5')){
-              item.povBooks[i] = " A Feast for Crows"
-            }
-            if(item.povBooks[i].includes('6')){
-              item.povBooks[i] = " The Sworn Sword"
-            }
-            if(item.povBooks[i].includes('7')){
-              item.povBooks[i] = " The Mystery Knight"
-            }
-            if(item.povBooks[i].includes('8')){
-              item.povBooks[i] = " A Dance with Dragons"
-            }
-            if(item.povBooks[i].includes('9')){
-              item.povBooks[i] = " The Princess and the Queen"
-            }
-            if(item.povBooks[i].includes('10')){
-              item.povBooks[i] = " The Rogue Prince"
-            }
-            if(item.povBooks[i].includes('11')){
-              item.povBooks[i] = " The World of Ice and Fire"
-            }
-            if(item.povBooks[i].includes('12')){
-              item.povBooks[i] = " A Knight of the Seven Kingdoms"
-            }   
-           }
-       }
+         if(item.povBooks !==0){
+          for(let i=0; i<item.povBooks.length; i++){
+            let url = item.povBooks[i];
+            this._dictionaryService.getUrlInfo(url).subscribe(data => {
+              item.povBooks[i] = data.name
+            })
+          }
+        }
+
+        if(item.books !==0){
+          for(let i=0; i<item.books.length; i++){
+            let url = item.books[i];
+            this._dictionaryService.getUrlInfo(url).subscribe(data => {
+              item.books[i] = data.name;
+            })
+          }
+        }
+
+        if(item.allegiances !==0){
+          for(let i=0; i<item.allegiances.length;i++){
+            let url = item.allegiances[i];
+            this._dictionaryService.getUrlInfo(url).subscribe(data => {
+              item.allegiances[i] = data.name;
+            })
+          }
+        }
+
+        if(item.spouse !==0){
+          for(let i=0; i<item.spouse.length; i++){
+            let url = item.spouse[i];
+            this._dictionaryService.getUrlInfo(url).subscribe(data => {
+              item.spouse[i] = data.name;
+            })
+          }
+        }
+
+        if(item.father != ""){
+          let url = item.father;
+          this._dictionaryService.getUrlInfo(url).subscribe(data => {
+            item.father = data.name
+          })
+        }
+
+        if(item.mother != ""){
+          let url = item.mother;
+          this._dictionaryService.getUrlInfo(url).subscribe(data => {
+            item.mother = data.name;
+          })
+        }
 
       this.characterSearchArray.length = 0;
       this.characterSearchArray.push(item)

@@ -46,8 +46,30 @@ export class BookDetailComponent  {
   async getBooks(){
       for(let i=1; i<2; i++){
         const list: any[] = await this._dictionaryService.getBooks(i).toPromise();
-        list.forEach(item => this.books.push(item));
+        list.forEach(item => {
+          
+          if(item.povCharacters !== 0){
+              for(let i=0;i<item.povCharacters.length;i++){
+                let url = item.povCharacters[i];
+                this._dictionaryService.getUrlInfo(url).subscribe(data => {
+                  item.povCharacters[i] = data.name;
+                })
+              }
+          }
+          if(item.characters !== 0){
+              for(let i=0; i<item.characters.length;i++){
+                let url = item.characters[i];
+                this._dictionaryService.getUrlInfo(url).subscribe(data => {
+                  item.characters[i] = data.name;
+                })
+              }
+          }
+          
+          
+          
+          this.books.push(item)});
       }
+      console.log(this.books[0])
   }
 
   getBook(book: RootObject){
